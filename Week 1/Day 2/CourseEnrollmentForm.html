@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1>Course Enrollment Form</h1>
+    <form>
+        <label for="email"><b>Email:</b></label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <br>
+        <label for="course"><b>Select Course:</b></label>
+        <input list="courses" id="course" required>
+        <datalist id="courses">
+            <option value="HTML">
+            <option value="Python">
+            <option value="Data Science">
+            <option value="Java">
+        </datalist>
+        <br>
+        <br>
+        <label><b>Enrollment Completion:</b></label>
+        <progress value="20" min ="0" max="100"></progress>
+        <br>
+        <br>
+        <label><b>Skill Meter:</b></label>
+        <meter min="0" max="10" value="8"></meter>
+        <br>
+        <br>
+        <input type="submit" value="Enroll">
+    </form>    
+</body>
+</html>

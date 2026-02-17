@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registeration</title>
+</head>
+<body>
+    <h1>Student Registration Form</h1>
+    <form action="/student">
+        <div>
+            <div>
+                <label for="fname">Name:</label>
+                <input type="text" id="fname" name="fname" placeholder="Enter Full Name" value="">
+            </div>
+        </br>
+        </br>
+            <div>
+                <label for="Email">Email:</label>
+                <input type="email" id="Email" name="Email" placeholder="Enter Email Id" value="" required>
+            </div>        
+        </br>
+        </br>
+            <div>
+                <label for="PhoneNo">Mobile No:</label>
+                <input type="text" id="PhoneNo" maxlength="10" name="PhoneNo" required pattern="^[6-9]\d{9}$" placeholder="Enter a Phone No">
+            </div>
+        </br>
+        </br>
+            <div>
+                <label for="age">Age</label>
+                <input type="number"  id="age" name="age"  min="18" max="60" value="" required >
+            </div>
+        </br>
+        </br>
+            <div>
+                <label for="Dob">Date of Birth:</label>
+                <input type="date"  id="Dob" name="Dob" value="">
+            </div>
+        </br>
+        </br>
+            <div>
+                <input type="submit" id="bSubmit" value="Submit">
+                <input type="reset" value="Reset">
+        </div>
+    </form>
+</body>
+</html>
