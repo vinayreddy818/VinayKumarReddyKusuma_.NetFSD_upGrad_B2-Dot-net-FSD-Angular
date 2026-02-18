@@ -1,0 +1,37 @@
+        body {
+            font-family: Verdana, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .product-features {
+            width: 60%;
+            margin: 40px auto;
+            border: 3px solid black;
+            border-radius: 16px;
+            box-shadow: 3px 3px rgb(54, 51, 51);
+        }
+
+        .product-features h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .product-features ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .product-features li {
+            background-color: #ffffff;
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .product-features li:hover {
+            background-color: #007BFF;
+            color: white;
+        }

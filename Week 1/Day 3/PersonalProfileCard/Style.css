@@ -1,0 +1,51 @@
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .Profile-card {
+            background-color: rgb(155, 199, 94);
+            padding: 30px;
+            color: rgb(23, 22, 22);
+            border: 2px solid #101010;
+            box-shadow: 7px 5px rgb(68, 66, 66);
+            border-radius: 15px;
+            width: 300px;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1{
+            font-size: 24px;
+            letter-spacing: 1px;
+            color: rgb(189, 55, 55);
+        }
+
+        .role {
+            color: #131313;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
