@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Display</title>
+</head>
+<body>
+    <p>Display basic user information stored inside a JavaScript object.</p>
+    <button onclick="InfoDisplay()"> Click Here</button>
+    <p id="name"></p>
+    <p id="age"></p>
+    <p id="city"></p>
+    <script>
+        function InfoDisplay()
+        {
+            let obj={
+                Name:"Vinay",
+                Age : 23,
+                City : "Hyderabad"
+            }
+
+            Display(obj);
+        }
+        function Display(obj){
+            document.getElementById("name").innerText=`Name : ${obj.Name}`;
+            document.getElementById("age").innerText=`Age : ${obj.Age}` ;
+            document.getElementById("city").innerText=`City : ${obj.City}`;
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Profile Manager</title>
+    <style></style>
+</head>
+<body>
+
+    <h2>Student Profile Manager</h2>
+
+    <button id="showProfile">Show Profile</button>
+
+    <br><br>
+
+    <input type="number" id="marksInput" placeholder="Enter new marks">
+    <button id="updateMarksBtn">Update Marks</button>
+
+    <div id="profileCard" style="margin-top:15px;"></div>
+
+    <script>
+
+        var student = {
+            name: "Vinay",
+            rollNo: 589,
+            marks: 85
+        };
+
+        function updateStudentProfile(studentObj) {
+            document.getElementById("profileCard").innerHTML =
+                "<h3>Student Profile</h3>" +
+                "<p><strong>Name:</strong> " + studentObj.name + "</p>" +
+                "<p><strong>Roll No:</strong> " + studentObj.rollNo + "</p>" +
+                "<p><strong>Marks:</strong> " + studentObj.marks + "</p>";
+        }
+
+        function updateMarks(newMarks) {
+
+            if (newMarks === "" || isNaN(newMarks)) {
+                alert("Please enter valid marks");
+                return;
+            }
+
+            student.marks = Number(newMarks); // convert to number
+            updateStudentProfile(student);
+        }
+
+        document.getElementById("showProfile")
+            .addEventListener("click", function () {
+                updateStudentProfile(student);
+            });
+
+        document.getElementById("updateMarksBtn")
+            .addEventListener("click", function () {
+
+                var enteredMarks = document.getElementById("marksInput").value;
+                updateMarks(enteredMarks);
+
+            });
+
+    </script>
+
+</body>
+</html>
