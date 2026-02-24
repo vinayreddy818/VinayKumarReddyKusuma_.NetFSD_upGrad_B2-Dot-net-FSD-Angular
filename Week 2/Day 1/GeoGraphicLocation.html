@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoGraphicLocation</title>
+</head>
+<body>
+    <h2>Location Logger</h2>
+
+<button onclick="getLocation()">Get My Location</button>
+
+<p id="output"></p>
+
+<div id="map"></div>
+
+<h3>Location History</h3>
+<ul id="history"></ul>
+
+<script>
+
+window.onload = displayHistory;
+
+function getLocation() {
+
+    var output = document.getElementById("output");
+
+    if (!navigator.geolocation) {
+        output.innerHTML = "Geolocation is not supported by your browser.";
+        return;
+    }
+
+    output.innerHTML = "Fetching location...";
+
+    navigator.geolocation.getCurrentPosition(success, error);
+}
+
+function success(position) {
+
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+
+    document.getElementById("output").innerHTML =
+        "Latitude: " + latitude +
+        "<br>Longitude: " + longitude;
+
+    showMap(latitude, longitude);
+
+    let locations = JSON.parse(localStorage.getItem("locations")) || [];
+
+    locations.push({
+        latitude: latitude,
+        longitude: longitude,
+        time: new Date().toLocaleString()
+    });
+
+    if (locations.length > 5) {
+        locations.shift();
+    }
+
+    localStorage.setItem("locations", JSON.stringify(locations));
+
+    displayHistory();
+}
+
+function error(err) {
+
+    switch (err.code) {
+        case err.PERMISSION_DENIED:
+            alert("User denied location access.");
+            break;
+
+        case err.POSITION_UNAVAILABLE:
+            alert("Location unavailable.");
+            break;
+
+        case err.TIMEOUT:
+            alert("Request timed out.");
+            break;
+
+        default:
+            alert("Unknown error occurred.");
+    }
+}
+
+function showMap(lat, lon) {
+
+    var mapDiv = document.getElementById("map");
+
+    mapDiv.innerHTML =
+        '<iframe width="100%" height="400" style="border:1px solid black;" ' +
+        'src="https://maps.google.com/maps?q=' +
+        lat + ',' + lon +
+        '&z=15&output=embed">' +
+        '</iframe>';
+}
+
+function displayHistory() {
+
+    let locations = JSON.parse(localStorage.getItem("locations")) || [];
+    let list = document.getElementById("history");
+    list.innerHTML = "";
+
+    locations.forEach(function(loc) {
+        let li = document.createElement("li");
+        li.innerHTML =
+            loc.time +
+            " - Lat: " + loc.latitude +
+            " Lon: " + loc.longitude;
+        list.appendChild(li);
+    });
+}
+
+</script>
+</body>
+</html>
