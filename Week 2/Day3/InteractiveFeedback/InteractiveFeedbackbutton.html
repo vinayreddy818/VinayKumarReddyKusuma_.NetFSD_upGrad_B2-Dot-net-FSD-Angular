@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive FeedBack</title>
+    <style>
+        .Container{
+        background-color: antiquewhite;
+        display: flex;              
+        justify-content: center;    
+        align-items: center;        
+        height: 100vh;              
+        margin: 0;    
+        }
+        div{
+            background-color: aliceblue;
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+            border-radius: 3px;
+            box-shadow: 5px 4px 4px 4px rgb(65, 63, 63);
+            text-align: center;
+        }
+        button{
+            color:white;
+            background-color: blue;
+            padding: 8px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px 2px rgb(63, 62, 62);
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+<body class="Container">
+    <div>
+        <h1>FeedBack Page</h1>
+        <button type="submit" id="submitbtn">Submit Feedback</button>
+        <p id="display" style="color: green;"></p>
+    </div>
+    <script src="Script.js" type="text/javascript"></script>
+</body>
+</html>
