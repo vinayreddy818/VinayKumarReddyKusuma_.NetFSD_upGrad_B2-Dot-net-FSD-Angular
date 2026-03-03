@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Cart</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: Arial; margin:40px; }
+        .product { border:1px solid #ccc; padding:10px; margin-bottom:10px; }
+        .cart { font-weight:bold; margin-bottom:20px; }
+        .added { color:green; margin-left:10px; }
+    </style>
+</head>
+<body>
+
+<div class="cart">Cart Items: <span id="cartCount">0</span></div>
+
+<div class="product">
+    <p>OnePlus 12R</p>
+    <button class="addBtn">Add to Cart</button>
+    <span class="msg"></span>
+</div>
+
+<div class="product">
+    <p>VIVO</p>
+    <button class="addBtn">Add to Cart</button>
+    <span class="msg"></span>
+</div>
+
+<div class="product">
+    <p>Iphone</p>
+    <button class="addBtn">Add to Cart</button>
+    <span class="msg"></span>
+</div>
+
+<div class="product">
+    <p>POCO M6</p>
+    <button class="addBtn">Add to Cart</button>
+    <span class="msg"></span>
+</div>
+
+<script>
+$(document).ready(function(){
+    var count = 0;
+
+    $(".addBtn").click(function(){
+        count++;
+        $("#cartCount").text(count);
+
+        $(this).prop("disabled", true);
+        $(this).siblings(".msg").text("Added!").addClass("added");
+    });
+});
+</script>
+
+</body>
+</html>
