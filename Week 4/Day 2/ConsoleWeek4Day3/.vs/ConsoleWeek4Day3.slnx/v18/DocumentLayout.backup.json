@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\vinay\\source\\repos\\ConsoleWeek4Day3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{03947765-E654-4CB0-B836-3CBE24F67580}|ConsoleWeek4Day3\\ConsoleWeek4Day3.csproj|c:\\users\\vinay\\source\\repos\\consoleweek4day3\\consoleweek4day3\\consoleweek4day3.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{03947765-E654-4CB0-B836-3CBE24F67580}|ConsoleWeek4Day3\\ConsoleWeek4Day3.csproj|solutionrelative:consoleweek4day3\\consoleweek4day3.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ConsoleWeek4Day3",
+              "DocumentMoniker": "C:\\Users\\vinay\\source\\repos\\ConsoleWeek4Day3\\ConsoleWeek4Day3\\ConsoleWeek4Day3.csproj",
+              "RelativeDocumentMoniker": "ConsoleWeek4Day3\\ConsoleWeek4Day3.csproj",
+              "ToolTip": "C:\\Users\\vinay\\source\\repos\\ConsoleWeek4Day3\\ConsoleWeek4Day3\\ConsoleWeek4Day3.csproj",
+              "RelativeToolTip": "ConsoleWeek4Day3\\ConsoleWeek4Day3.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-11T14:43:39.686Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
