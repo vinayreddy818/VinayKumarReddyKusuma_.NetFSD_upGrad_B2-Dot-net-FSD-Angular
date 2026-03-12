@@ -1,0 +1,14 @@
+C:\Users\vinay\source\repos\ConsoleWeek4Day4\ConsoleWeek4Day4\obj\Debug\net10.0\ConsoleWeek4Day4.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vinay\source\repos\ConsoleWeek4Day4\ConsoleWeek4Day4\obj\Debug\net10.0\ConsoleWeek4Day4.AssemblyInfoInputs.cache
+C:\Users\vinay\source\repos\ConsoleWeek4Day4\ConsoleWeek4Day4\obj\Debug\net10.0\ConsoleWeek4Day4.AssemblyInfo.cs
+C:\Users\vinay\source\repos\ConsoleWeek4Day4\ConsoleWeek4Day4\obj\Debug\net10.0\ConsoleWeek4Day4.csproj.CoreCompileInputs.cache
+C:\Users\vinay\source\repos\ConsoleWeek4Day4\ConsoleWeek4Day4\bin\Debug\net10.0\ConsoleWeek4Day4.exe
+C:\Users\vinay\source\repos\ConsoleWeek4Day4\ConsoleWeek4Day4\bin\Debug\net10.0\ConsoleWeek4Day4.deps.json
+C:\Users\vinay\source\repos\ConsoleWeek4Day4\ConsoleWeek4Day4\bin\Debug\net10.0\ConsoleWeek4Day4.runtimeconfig.json
+C:\Users\vinay\source\repos\ConsoleWeek4Day4\ConsoleWeek4Day4\bin\Debug\net10.0\ConsoleWeek4Day4.dll
+C:\Users\vinay\source\repos\ConsoleWeek4Day4\ConsoleWeek4Day4\bin\Debug\net10.0\ConsoleWeek4Day4.pdb
+C:\Users\vinay\source\repos\ConsoleWeek4Day4\ConsoleWeek4Day4\obj\Debug\net10.0\ConsoleWeek4Day4.dll
+C:\Users\vinay\source\repos\ConsoleWeek4Day4\ConsoleWeek4Day4\obj\Debug\net10.0\refint\ConsoleWeek4Day4.dll
+C:\Users\vinay\source\repos\ConsoleWeek4Day4\ConsoleWeek4Day4\obj\Debug\net10.0\ConsoleWeek4Day4.pdb
+C:\Users\vinay\source\repos\ConsoleWeek4Day4\ConsoleWeek4Day4\obj\Debug\net10.0\ConsoleWeek4Day4.genruntimeconfig.cache
+C:\Users\vinay\source\repos\ConsoleWeek4Day4\ConsoleWeek4Day4\obj\Debug\net10.0\ref\ConsoleWeek4Day4.dll
