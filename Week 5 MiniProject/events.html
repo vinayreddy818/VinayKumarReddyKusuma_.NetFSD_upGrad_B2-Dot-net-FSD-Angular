@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manage Events - Upgrad Events</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-dark bg-primary px-3">
+    <a class="navbar-brand" href="Home.html">Upgrad Events</a>
+    <div class="ms-auto">
+      <a href="Home.html" class="text-white me-3 text-decoration-none">Home</a>
+      <a href="AdminLogin.html" class="text-white me-3 text-decoration-none">Login</a>
+      <a href="events.html" class="text-white me-3 text-decoration-none">Events</a>
+      <a href="contact.html" class="text-white text-decoration-none">Contact Us</a>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h4 class="fw-bold mb-0">Manage Events</h4>
+    <button class="btn" onclick="doLogout()">Logout</button>
+  </div>
+
+  <div class="container mt-4">
+
+    <!-- Add Event -->
+    <div class="section-box">
+      <h5 class="fw-bold mb-3">Add Event</h5>
+
+      <input type="text" id="newEventId" class="form-control mb-2" placeholder="Event ID" />
+      <input type="text" id="newEventName" class="form-control mb-2" placeholder="Event Name" />
+
+      <select id="newEventCategory" class="form-control mb-2">
+        <option value="">Select Category</option>
+        <option value="Tech & Innovations">Tech & Innovations</option>
+        <option value="Industrial Event">Industrial Event</option>
+      </select>
+
+      <input type="date" id="newEventDate" class="form-control mb-2" />
+      <input type="time" id="newEventTime" class="form-control mb-2" />
+      <input type="url" id="newEventUrl" class="form-control mb-2" placeholder="Event URL" />
+
+      <button class="btn btn-primary" onclick="addEvent()">Add Event</button>
+    </div>
+
+    <!-- Search Event -->
+    <div class="section-box">
+      <h5 class="fw-bold mb-3">Search Event</h5>
+      <div class="row">
+        
+        <div class="col-md-4 mb-2">
+          <select id="searchField" class="form-control">
+            <option value="">All</option>
+            <option value="id">ID</option>
+            <option value="name">Name</option>
+            <option value="category">Category</option>
+          </select>
+        </div>
+
+        <div class="col-md-4 mb-2">
+          <input type="text" id="searchValue" class="form-control" placeholder="Enter search value" />
+        </div>
+
+        <div class="col-md-4 mb-2">
+          <button class="btn btn-primary" onclick="searchEvents()">Search</button>
+        </div>
+      </div>
+
+      <div class="row mt-3" id="eventsDisplay"></div>
+    </div>
+
+  </div>
+
+  <script>
+    if (sessionStorage.getItem("isLoggedIn") !== "true") {
+      alert("Login first!");
+      window.location.href = "AdminLogin.html";
+    }
+
+    var db;
+    var request = indexedDB.open("upgradEventsDB", 1);
+
+    request.onupgradeneeded = function(e) {
+      db = e.target.result;
+      db.createObjectStore("events", { keyPath: "id" });
+    };
+
+    request.onsuccess = function(e) {
+      db = e.target.result;
+      seedDefaultEvents();
+    };
+
+    function seedDefaultEvents() {
+      var tx = db.transaction("events", "readonly");
+      var store = tx.objectStore("events");
+      var req = store.getAll();
+
+      req.onsuccess = function() {
+        if (req.result.length === 0) {
+          var defaults = [
+            { id: "101", name: ".NET Tech", category: "Tech & Innovations", date: "2026-03-04", time: "15:15", url: "#" },
+            { id: "102", name: "Global Summit", category: "Tech & Innovations", date: "2026-03-09", time: "14:15", url: "#" },
+          ];
+
+          var tx2 = db.transaction("events", "readwrite");
+          var store2 = tx2.objectStore("events");
+          defaults.forEach(ev => store2.add(ev));
+
+          tx2.oncomplete = displayAllEvents;
+        } else {
+          displayAllEvents();
+        }
+      };
+    }
+
+    function displayAllEvents() {
+      var tx = db.transaction("events", "readonly");
+      var store = tx.objectStore("events");
+      var req = store.getAll();
+
+      req.onsuccess = function() {
+        renderCards(req.result);
+      };
+    }
+
+    function renderCards(events) {
+      var container = document.getElementById("eventsDisplay");
+      container.innerHTML = "";
+
+      if (events.length === 0) {
+        container.innerHTML = "<p>No events found</p>";
+        return;
+      }
+
+      events.forEach(ev => {
+        container.innerHTML += `
+          <div class="col-md-4">
+            <div class="event-card">
+              <h6>${ev.name}</h6>
+              <p>ID: ${ev.id}</p>
+              <p>Category: ${ev.category}</p>
+              <p>Date: ${ev.date}</p>
+              <p>Time: ${ev.time}</p>
+              <a href="${ev.url}" target="_blank" class="btn btn-primary w-100 mb-2">Join</a>
+              <button class="btn btn-danger w-100" onclick="deleteEvent('${ev.id}')">Delete</button>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    // adding event
+    function addEvent() {
+      var id = newEventId.value.trim();
+      var name = newEventName.value.trim();
+      var category = newEventCategory.value;
+      var date = newEventDate.value;
+      var time = newEventTime.value;
+      var url = newEventUrl.value.trim();
+    // Validate details
+
+      if (!id || !name || !category || !date || !time || !url) {
+        alert("Please fill all fields!");
+        return;
+      }
+
+      if (!/^\d+$/.test(id)) {
+        alert("Event ID must be numeric!");
+        return;
+      }
+
+      try {
+        new URL(url);
+      } catch {
+        alert("Enter valid URL!");
+        return;
+      }
+
+      var txCheck = db.transaction("events", "readonly");
+      var storeCheck = txCheck.objectStore("events");
+      var getReq = storeCheck.get(id);
+
+      getReq.onsuccess = function () {
+        if (getReq.result) {
+          alert("Event ID already exists!");
+          return;
+        }
+
+        var tx = db.transaction("events", "readwrite");
+        var store = tx.objectStore("events");
+
+        store.add({ id, name, category, date, time, url });
+
+        tx.oncomplete = function () {
+          alert("Event added successfully!");
+          displayAllEvents();
+
+          // clear fields after submittig the event details
+          newEventId.value = "";
+          newEventName.value = "";
+          newEventCategory.value = "";
+          newEventDate.value = "";
+          newEventTime.value = "";
+          newEventUrl.value = "";
+        };
+      };
+    }
+
+    function deleteEvent(id) {
+      var tx = db.transaction("events", "readwrite");
+      tx.objectStore("events").delete(id);
+      tx.oncomplete = displayAllEvents;
+    }
+
+    function searchEvents() {
+      var field = document.getElementById("searchField").value;
+      var value = document.getElementById("searchValue").value.toLowerCase();
+
+      var tx = db.transaction("events", "readonly");
+      var store = tx.objectStore("events");
+      var req = store.getAll();
+
+      req.onsuccess = function() {
+        var data = req.result;
+
+        if (!value) {
+          renderCards(data);
+          return;
+        }
+
+        var filtered = data.filter(ev => {
+          if (field === "id") return ev.id.toLowerCase().includes(value);
+          if (field === "name") return ev.name.toLowerCase().includes(value);
+          if (field === "category") return ev.category.toLowerCase().includes(value);
+
+          return (
+            ev.id.toLowerCase().includes(value) ||
+            ev.name.toLowerCase().includes(value) ||
+            ev.category.toLowerCase().includes(value)
+          );
+        });
+
+        renderCards(filtered);
+      };
+    }
+
+    function doLogout() {
+      sessionStorage.removeItem("isLoggedIn");
+      window.location.href = "AdminLogin.html";
+    }
+  </script>
+
+</body>
+</html>
