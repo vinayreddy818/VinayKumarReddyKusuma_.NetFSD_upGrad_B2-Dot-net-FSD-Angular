@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "ConsoleWeek5Day3/1.0.0": {
+        "runtime": {
+          "ConsoleWeek5Day3.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ConsoleWeek5Day3/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
